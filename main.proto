@@ -1,17 +1,17 @@
 syntax = "proto3";
-package main;
+package main
 
-service info {
-  rpc add(num) returns (id);
-  rpc get(id) returns (num);
+service prinfo {
+  rpc add(prod) returns (pid);
+  rpc get(pid) returns(prod);
 }
 
-message inf {
+message prod {
   string id = 1;
   string name = 2;
   string desc = 3;
 }
 
-message infid {
+message pid {
   string val = 1;
 }
