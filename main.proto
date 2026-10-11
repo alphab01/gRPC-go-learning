@@ -1,0 +1,17 @@
+syntax = "proto3";
+package main;
+
+service info {
+  rpc add(num) returns (id);
+  rpc get(id) returns (num);
+}
+
+message inf {
+  string id = 1;
+  string name = 2;
+  string desc = 3;
+}
+
+message infid {
+  string val = 1;
+}
