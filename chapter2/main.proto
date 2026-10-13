@@ -1,5 +1,7 @@
 syntax = "proto3";
-package main
+package main;
+
+option go_package = ".";
 
 service prinfo {
   rpc add(prod) returns (pid);
