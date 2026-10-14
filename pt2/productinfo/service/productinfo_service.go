@@ -2,13 +2,12 @@ package main
 
 import (
 	"context"
-	"errors"
-	"log"
 
 	pd "productinfo/service/ecommerce"
 
 	"github.com/gofrs/uuid"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type server struct {
@@ -18,7 +17,7 @@ type server struct {
 func (s *server) AddProduct(ctx context.Context, in *pb.Product) (*pb.ProductID, error) {
 	out, err := uuid.NewV4()
 	if err != nil {
-		retunr ni.status.Errorf(codes.Internal, err)
+		return nil, status.Errorf(codes.Internal, "err", err)
 	}
 	in.Id = out.String()
 	if s.productMap == nil {
