@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	pb "productinfo/client/ecommerce"
+	pd "productinfo/service/ecommerce"
 
 	"google.golang.org/grpc"
 )
@@ -21,18 +21,17 @@ func main() {
 		log.Fatal(err)
 	}
 	defer c.Close()
-	c2 := pb.NewProductInfoClient(c)
+	c2 := pd.NewProductInfoClient(c)
 	name := "Google Pixel 9 pro"
 	description := `Best of the best phones`
-	price := float32(1000.0)
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	r, err := c2.AddProduct(ctx, &pb.Product{Name: name, Description: description, Price: price})
+	r, err := c2.AddProduct(ctx, &pd.Product{Name: name, Description: description})
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("pid:", r.Value)
-	prod, err := c2.GetProduct(ctx, &pb.ProductIDP{Value: r.Value})
+	prod, err := c2.GetProduct(ctx, &pd.ProductID{Value: r.Value})
 	if err != nil {
 		log.Fatal(err)
 	}
