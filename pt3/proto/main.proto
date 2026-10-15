@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/wrappers.proto";
 
-package ecommerce;
+package main;
 
 service OrderManagement {
   rpc getOrder(google.protobuf.StringValue) returns (Order);
