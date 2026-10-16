@@ -9,3 +9,30 @@ service Auth {
   rpc check(checkreq) returns (checkrep);
   rpc logout(logoutreq) returns (logoutrep);
 }
+
+message logreq {
+  string log = 1;
+  string pass = 2;
+}
+
+message logrep {
+  string token = 1;
+}
+
+message checkreq {
+  string token = 1;
+}
+
+message checkrep {
+  bool is_auth = 1;
+  string admin_id = 2;
+  string log = 3;
+}
+
+message logoutreq {
+  string token = 1;
+}
+
+message logoutrep {
+  bool is_logout = 1;
+}
