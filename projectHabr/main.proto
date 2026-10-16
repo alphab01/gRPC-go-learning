@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "./main";
+
+service Auth {
+  rpc log(logreq) returns (logrep);
+  rpc check(checkreq) returns (checkrep);
+  rpc logout(logoutreq) returns (logoutrep);
+}
